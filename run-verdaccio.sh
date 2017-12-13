@@ -7,7 +7,7 @@ if [ -n "$S3_BUCKET" ]; then
 
   echo "Doing initial sync with S3"
   /usr/bin/aws s3 sync s3://$S3_BUCKET /verdaccio
-  echo "Changing file permissions to 'verdaccio' user"
+  echo "Changing file permissions to verdaccio user"
   chown -R verdaccio /verdaccio
 
   echo "*/5 * * * * /usr/local/bin/s3-sync.sh > /var/log/s3-sync.log" | /usr/bin/crontab -
