@@ -13,8 +13,6 @@ COPY s3-sync.sh /usr/local/bin/s3-sync.sh
 
 RUN chmod +x /usr/local/bin/run-verdaccio.sh && chmod +x /usr/local/bin/s3-sync.sh
 
-USER verdaccio
-
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 
 CMD ["/usr/local/bin/run-verdaccio.sh"]
