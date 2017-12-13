@@ -3,7 +3,6 @@ set -e
 
 if [ -n "$S3_BUCKET" ]; then
   echo "Setting up S3-Sync"
-  chmod +x /usr/local/bin/s3-sync.sh
   touch /var/log/s3-sync.log
 
   echo "Doing initial sync with S3"
