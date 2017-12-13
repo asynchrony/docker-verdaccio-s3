@@ -14,4 +14,5 @@ if [ -n "$S3_BUCKET" ]; then
 fi
 
 echo "Starting Verdaccio Server"
-$APPDIR/bin/verdaccio --config /verdaccio/conf/config.yaml --listen $PROTOCOL://0.0.0.0:${PORT}
+su -s "/bin/bash/" -c "$APPDIR/bin/verdaccio --config /verdaccio/conf/config.yaml --listen $PROTOCOL://0.0.0.0:${PORT}" "verdaccio"
+
