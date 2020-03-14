@@ -5,7 +5,14 @@ Private NPM container that can backup to s3
 The container will sync content down upon starting, and perform a backup sync every 5 minutes. The EC2 instance running this container must have access to the S3 bucket via IAM Profile.
 
 ```
-docker run --name verdaccio -e S3_BUCKET=<s3 bucket name> -p 80:4873 asynchrony/docker-verdaccio-s3
+mkdir -p $PWD/verdaccio/storage $PWD/verdaccio/conf
+
+# See https://verdaccio.org/docs/en/configuration for configuration.
+# A sample configuration file has been included as config.yaml.template file, edit it
+
+cp config.yaml.template $PWD/verdaccio/conf/config.yaml
+
+docker run --name verdaccio -v $PWD/verdaccio/storage:/verdaccio/storage -v $PWD/verdaccio/conf:/verdaccio/conf -p 80:4873 asynchrony/docker-verdaccio-s3
 ```
 
 ## Running in AWS ECS Fargate

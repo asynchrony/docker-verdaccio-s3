@@ -1,4 +1,4 @@
-FROM verdaccio/verdaccio:2.7
+FROM verdaccio/verdaccio:4
 
 USER root
 
@@ -13,6 +13,6 @@ COPY s3-sync.sh /usr/local/bin/s3-sync.sh
 
 RUN chmod +x /usr/local/bin/run-verdaccio.sh && chmod +x /usr/local/bin/s3-sync.sh
 
-ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
-
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+ENV NODE_ENV=production
 CMD ["/usr/local/bin/run-verdaccio.sh"]
