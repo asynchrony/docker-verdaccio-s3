@@ -12,7 +12,7 @@ mkdir -p $PWD/verdaccio/storage $PWD/verdaccio/conf
 
 cp config.yaml.template $PWD/verdaccio/conf/config.yaml
 
-docker run --name verdaccio -v $PWD/verdaccio/storage:/verdaccio/storage -v $PWD/verdaccio/conf:/verdaccio/conf -p 80:4873 asynchrony/docker-verdaccio-s3
+docker run --name verdaccio -e S3_BUCKET=<s3 bucket name> -v $PWD/verdaccio/storage:/verdaccio/storage -v $PWD/verdaccio/conf:/verdaccio/conf -p 80:4873 asynchrony/docker-verdaccio-s3
 ```
 
 ## Running in AWS ECS Fargate

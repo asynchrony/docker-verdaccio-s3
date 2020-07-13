@@ -10,6 +10,7 @@ RUN apk add --no-cache -v \
 
 COPY run-verdaccio.sh /usr/local/bin/run-verdaccio.sh
 COPY s3-sync.sh /usr/local/bin/s3-sync.sh
+COPY config.yaml.template /verdaccio/conf/
 
 RUN chmod +x /usr/local/bin/run-verdaccio.sh && chmod +x /usr/local/bin/s3-sync.sh
 
