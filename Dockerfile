@@ -1,4 +1,4 @@
-FROM verdaccio/verdaccio:2.7
+FROM verdaccio/verdaccio:4
 
 USER root
 
@@ -10,9 +10,10 @@ RUN apk add --no-cache -v \
 
 COPY run-verdaccio.sh /usr/local/bin/run-verdaccio.sh
 COPY s3-sync.sh /usr/local/bin/s3-sync.sh
+COPY config.yaml.template /verdaccio/conf/config.yaml
 
 RUN chmod +x /usr/local/bin/run-verdaccio.sh && chmod +x /usr/local/bin/s3-sync.sh
 
-ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
-
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+ENV NODE_ENV=production
 CMD ["/usr/local/bin/run-verdaccio.sh"]
